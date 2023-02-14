@@ -5,7 +5,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>843.2,1556</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>843.2,1333.6</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>wf_Gerar_Fila_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="27">
@@ -75,14 +75,14 @@
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="wf_Gerar_Fila" sap:VirtualizedContainerService.HintSize="583.2,1491.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="wf_Gerar_Fila" sap:VirtualizedContainerService.HintSize="583.2,1268.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message - Inicio" sap:VirtualizedContainerService.HintSize="540,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Inicio wf_Gerar_Fila&quot;]" />
-    <Sequence sap:VirtualizedContainerService.HintSize="540,1136" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence sap:VirtualizedContainerService.HintSize="540,913.6" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <Sequence.Variables>
         <Variable x:TypeArguments="scg:IEnumerable(ui:QueueItem)" Name="var_qiItemFila" />
         <Variable x:TypeArguments="x:String" Name="var_strGUID" />
@@ -100,7 +100,7 @@
           <InArgument x:TypeArguments="x:String">[Guid.NewGuid.ToString]</InArgument>
         </Assign.Value>
       </Assign>
-      <ui:GetQueueItems Priority="{x:Null}" DisplayName="Get Queue Items" FilterStrategy="Equals" FolderPath="Shared" sap:VirtualizedContainerService.HintSize="477.6,272" sap2010:WorkflowViewState.IdRef="GetQueueItems_1" QueueItemStates="New" QueueName="[in_Config(&quot;OrchestratorQueueName&quot;).ToString]" Result="[var_qiItemFila]">
+      <ui:GetQueueItems Priority="{x:Null}" DisplayName="Get Queue Items" FilterStrategy="Equals" FolderPath="Shared" sap:VirtualizedContainerService.HintSize="477.6,220" sap2010:WorkflowViewState.IdRef="GetQueueItems_1" QueueItemStates="New" QueueName="[in_Config(&quot;OrchestratorQueueName&quot;).ToString]" Result="[var_qiItemFila]">
         <ui:GetQueueItems.Duration>
           <InArgument x:TypeArguments="s:Nullable(x:Int32)" />
         </ui:GetQueueItems.Duration>
@@ -122,16 +122,22 @@
         <ui:GetQueueItems.Top>
           <InArgument x:TypeArguments="x:Int32" />
         </ui:GetQueueItems.Top>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
       </ui:GetQueueItems>
-      <If Condition="[var_qiItemFila.Count = 0]" sap:VirtualizedContainerService.HintSize="477.6,591.2" sap2010:WorkflowViewState.IdRef="If_1">
+      <If Condition="[var_qiItemFila.Count = 0]" sap:VirtualizedContainerService.HintSize="477.6,420.8" sap2010:WorkflowViewState.IdRef="If_1">
         <If.Then>
-          <Sequence sap:VirtualizedContainerService.HintSize="400,312.8" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <Sequence sap:VirtualizedContainerService.HintSize="400,142.4" sap2010:WorkflowViewState.IdRef="Sequence_3">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:AddQueueItem ServiceBaseAddress="{x:Null}" DisplayName="Add Queue Item" FolderPath="Shared" sap:VirtualizedContainerService.HintSize="356.8,223.2" sap2010:WorkflowViewState.IdRef="AddQueueItem_1" Priority="Normal" QueueType="in_Config(&quot;OrchestratorQueueName&quot;).ToString">
+            <ui:AddQueueItem ServiceBaseAddress="{x:Null}" DisplayName="Add Queue Item" FolderPath="Shared" sap:VirtualizedContainerService.HintSize="356.8,52.8" sap2010:WorkflowViewState.IdRef="AddQueueItem_1" Priority="Normal" QueueType="[in_Config(&quot;OrchestratorQueueName&quot;).ToString]">
               <ui:AddQueueItem.ItemInformation>
                 <InArgument x:TypeArguments="x:String" x:Key="GUID">[var_strGUID]</InArgument>
               </ui:AddQueueItem.ItemInformation>
@@ -144,6 +150,12 @@
               <ui:AddQueueItem.TimeoutMS>
                 <InArgument x:TypeArguments="x:Int32" />
               </ui:AddQueueItem.TimeoutMS>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
             </ui:AddQueueItem>
           </Sequence>
         </If.Then>
